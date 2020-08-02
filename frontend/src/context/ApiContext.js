@@ -164,9 +164,25 @@ const ApiContextProvider = (props) => {
   }
 
   return (
-    <div>
-      
-    </div>
+    <ApiContextProvider values={{
+      profile,
+      profiles,
+      cover,
+      setCover,
+      askList,
+      askListFull,
+      inbox,
+      requestFriend,
+      createProfile,
+      deleteProfile,
+      editProfile,
+      approveFriendRequest,
+      sendDirectMessage,
+      editedProfile,
+      setEditedProfile,
+    }}>
+      {props.children}
+    </ApiContextProvider>
   )
 }
 
