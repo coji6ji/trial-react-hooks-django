@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, {createContext, useState, useEffect } from 'react'
 import { withCookies } from 'react-cookie'
 import axios from 'axios'
 export const ApiContext = createContext()
@@ -164,7 +164,7 @@ const ApiContextProvider = (props) => {
   }
 
   return (
-    <ApiContextProvider values={{
+    <ApiContext.Provider value={{
       profile,
       profiles,
       cover,
@@ -182,7 +182,7 @@ const ApiContextProvider = (props) => {
       setEditedProfile,
     }}>
       {props.children}
-    </ApiContextProvider>
+    </ApiContext.Provider>
   )
 }
 
