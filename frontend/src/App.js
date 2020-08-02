@@ -4,7 +4,8 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 import indigo from '@material-ui/core/colors/indigo'
 import NavBar from './components/NavBar';
-import ApiContextProvider from './components/ApiContext'
+import ApiContextProvider from './context/ApiContext'
+import Main from './components/Main';
 
 const theme = createMuiTheme({
   palette: {
@@ -23,6 +24,9 @@ function App() {
     <ApiContextProvider>
       <MuiThemeProvider theme={theme}>
         <NavBar />
+        <div className="container">
+          <Main />
+        </div>
       </MuiThemeProvider>
     </ApiContextProvider>
   );
