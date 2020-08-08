@@ -51,7 +51,7 @@ const Ask = ({ask, profile}) => {
 
   return (
     <li className="list-item">
-      <h4>{ profile[0].nickName }</h4>
+      <h4>{ profile.nickName }</h4>
       {!ask.approved ?
         <Button size="small" className={classes.button} variant="contained" color="primary" onClick={()=>changeApproval()}>Approve</Button> :
         <button className="mail" onClick={()=>setModalIsOpen(true)}><RiMailAddLine/></button>

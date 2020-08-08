@@ -27,7 +27,7 @@ export const NavBar = (props) => {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h5" className={classes.title}>
-          SNS App
+          Simple Trial App
         </Typography>
         <Badge 
           className={classes.bg}
