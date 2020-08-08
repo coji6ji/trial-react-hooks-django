@@ -21,12 +21,12 @@ const ApiContextProvider = (props) => {
     const getMyProfile = async() => {
       try {
         const resMyProfile = await axios.get(`${apiBaseUrl}/api/user/myprofile/`, apiHeader(token))
-        const myProfile = resMyProfile.data.shift()
+        const myProfile = resMyProfile.data[0]
         const resApproval = await axios.get(`${apiBaseUrl}/api/user/approval/`, apiHeader(token))
         if (myProfile) {
           setProfile(myProfile)
           setEditedProfile({id: myProfile.id, nickName: myProfile.nickName})
-          setAskList(resApproval.data.filter(ask => myProfile.usePro === ask.askTo))
+          setAskList(resApproval.data.filter(ask => myProfile.userPro === ask.askTo))
           setAskListFull(resApproval.data)
         }
       } catch (e) {

@@ -18,7 +18,7 @@ const Profile = ({profileData, askData}) => {
   const {requestFriend, profile} = useContext(ApiContext)
   const request = () => {
     const askUploadData = new FormData()
-    askUploadData.append('askTo', profileData.usePro)
+    askUploadData.append('askTo', profileData.userPro)
     requestFriend(askUploadData)
   }
   return (
