@@ -1,14 +1,25 @@
-import React, { useContext } from 'react'
+import React, { useContext, Profiler } from 'react'
 import { ApiContext } from '../context/ApiContext'
 import Grid from '@material-ui/core/Grid'
 import { GoMail } from 'react-icons/go'
 import { BsFillPeopleFill } from 'react-icons/bs'
+import Profile from './Profile'
 
 const Main = () => {
+  const {profiles, profile, askList, askListFull,inbox} = useContext(ApiContext)
+    const profilesExceptMyself = profiles.filter(prof=> {return prof.id !== profile.id})
+    const listProfiles = profilesExceptMyself && (
+      profilesExceptMyself.map((p)=>
+        <Profile
+          key={p.id}
+          profileData={p}
+          askData = {askListFull.filter(ask=>{return (p.userPro === ask.askFrom) | (p.userPro === ask.askTo)})}
+        />))
   return (
     <Grid container>
       <Grid item xs={4}>
         <div className="app-profiles">
+          {listProfiles}
         </div>
       </Grid>
 

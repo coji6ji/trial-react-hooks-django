@@ -14,7 +14,7 @@ const ApiContextProvider = (props) => {
   const [inbox, setInbox] = useState([])
   const [cover, setCover]= useState([])
 
-  const apiBaseUrl = 'http://localhost:8000/'
+  const apiBaseUrl = 'http://localhost:8000'
   const apiHeader = token => ({ 'Authorization': `Token ${token}` })
 
   useEffect(() => {
