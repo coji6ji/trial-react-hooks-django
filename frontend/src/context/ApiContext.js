@@ -24,10 +24,10 @@ const ApiContextProvider = (props) => {
         const myProfile = resMyProfile.data.shift()
         const resApproval = await axios.get(`${apiBaseUrl}/api/user/approval/`, apiHeader(token))
         if (myProfile) {
-          setProfile(myProfile) 
+          setProfile(myProfile)
           setEditedProfile({id: myProfile.id, nickName: myProfile.nickName})
-          setAskList(resApproval.filter(ask => myProfile.usePro === ask.askTo))
-          setAskListFull(myProfile)
+          setAskList(resApproval.data.filter(ask => myProfile.usePro === ask.askTo))
+          setAskListFull(resApproval.data)
         }
       } catch (e) {
         console.log(e.message)
@@ -102,8 +102,7 @@ const ApiContextProvider = (props) => {
     cover.name && editData.append('img', cover, cover.name)
     try {
       const res = await axios.put(`${apiBaseUrl}/api/user/profile/${profile.id}/`, editData, headers)
-      const profile = res.data
-      setProfile(profile)
+      setProfile(res.data)
     } catch (e) {
       console.log(e.message)
     }
