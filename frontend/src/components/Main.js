@@ -6,9 +6,10 @@ import { BsFillPeopleFill as IconPeople } from 'react-icons/bs'
 import { AiFillHome as IconHome } from 'react-icons/ai'
 import Profile from './Profile'
 import ProfileManager from './ProfileManager'
+import Ask from './Ask';
 
 const Main = () => {
-  const {profiles, profile, askList, askListFull,inbox} = useContext(ApiContext)
+  const {profiles, profile, askList, askListFull, inbox} = useContext(ApiContext)
   const profilesExceptMyself = profiles.filter(prof=> {return prof.id !== profile.id})
   const listProfiles = profilesExceptMyself && (
     profilesExceptMyself.map((p)=> <Profile key={p.id} profileData={p}
@@ -32,12 +33,14 @@ const Main = () => {
           <ProfileManager />
         </div>
         <h3 className="page-title title-ask">
-          <IconPeople className="badge"/>Friend list
+          <IconPeople className="badge"/>Approval Friend list
         </h3>
         <div className="app-details">
           <div className="task-list">
-          <ul>
-          </ul>
+            <ul>
+              {profile.id && askList.map(ask=><Ask key={ask.id} ask={ask}
+              profile={profiles.filter(p=> {return p.userPro === ask.askFrom})}/>)}
+            </ul>
           </div>
         </div>
       </Grid>

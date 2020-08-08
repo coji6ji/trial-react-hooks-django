@@ -30,11 +30,9 @@ class FriendRequestViewSet(viewsets.ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         response = {'message': 'Delete is not allowed !'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
     def partial_update(self, request, *args, **kwargs):
         response = {'message': 'Patch is not allowed !'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
-
 
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
