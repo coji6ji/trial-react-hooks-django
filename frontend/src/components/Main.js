@@ -1,8 +1,9 @@
 import React, { useContext, Profiler } from 'react'
 import { ApiContext } from '../context/ApiContext'
 import Grid from '@material-ui/core/Grid'
-import { GoMail } from 'react-icons/go'
-import { BsFillPeopleFill } from 'react-icons/bs'
+import { GoMail as IconMail } from 'react-icons/go'
+import { BsFillPeopleFill as IconPeople } from 'react-icons/bs'
+import { AiFillHome as IconHome } from 'react-icons/ai'
 import Profile from './Profile'
 import ProfileManager from './ProfileManager'
 
@@ -15,17 +16,23 @@ const Main = () => {
   return (
     <Grid container>
       <Grid item xs={4}>
+        <h3 className="page-title">
+          <IconPeople className="badge"/>User list
+        </h3>
         <div className="app-profiles">
           {listProfiles}
         </div>
       </Grid>
 
       <Grid item xs={4}>
+        <h3 className="page-title">
+          <IconHome className="badge"/>My Profile
+        </h3>
         <div className="app-details">
           <ProfileManager />
         </div>
-        <h3 className="title-ask">
-          <BsFillPeopleFill className="badge"/>Approval request list
+        <h3 className="page-title title-ask">
+          <IconPeople className="badge"/>Friend list
         </h3>
         <div className="app-details">
           <div className="task-list">
@@ -36,8 +43,8 @@ const Main = () => {
       </Grid>
 
       <Grid item xs={4}>
-        <h3>
-          <GoMail className="badge"/>DM Inbox
+        <h3 className="page-title">
+          <IconMail className="badge"/>DM Inbox
         </h3>
         <div className="app-dms">
             <div className="task-list">
