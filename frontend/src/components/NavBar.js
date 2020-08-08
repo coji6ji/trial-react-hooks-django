@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { ApiContext } from '../context/ApiContext';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -18,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const NavBar = (props) => {
-  const classes = useStyles();
+  const classes = useStyles()
+  const {askList, profiles} = useContext(ApiContext)
   const Logout = () => event => {
     props.cookies.remove('current-token')
     window.location.href = '/'
@@ -29,9 +31,9 @@ export const NavBar = (props) => {
         <Typography variant="h5" className={classes.title}>
           Simple Trial App
         </Typography>
-        <Badge 
+        <Badge
           className={classes.bg}
-          badgeContent={3}
+          badgeContent={askList.filter(ask=> (ask.approved === false && profiles.filter(p=> p.userPro === ask.askFrom).shift())).length}
           color="secondary"
         >
           <NotificationsIcon />
